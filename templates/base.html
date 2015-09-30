@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% block content %}
+        {% load mptt_tags %}
+<ul>
+
+    {% recursetree nodes %}
+        <li>
+            <span style="color:#ed6cff">{{ node.first_name }}</span>
+            <span style="color:#ed6cff">{{ node.last_name }}</span>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+    {% endblock content %}
+</body>
+</html>
+
