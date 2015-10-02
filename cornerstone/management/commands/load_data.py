@@ -36,7 +36,7 @@ class Command(BaseCommand):
                         CornerstoneUserProfile.objects.update_or_create(guid = row[0], user_id = row[1], first_name = row[2], last_name = row[3])
 
             # adding parent
-
+            file.seek(0)
             for row in rows:
                 try:
                     user = CornerstoneUserProfile.objects.get(user_id = row[1])
