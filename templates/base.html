@@ -11,8 +11,8 @@
 
     {% recursetree nodes %}
         <li>
-            <span style="color:#ed6cff">{{ node.first_name }}</span>
-            <span style="color:#ed6cff">{{ node.last_name }}</span>
+            {{ node.first_name }}
+            {{ node.last_name }}
             {% if not node.is_leaf_node %}
                 <ul class="children">
                     {{ children }}
