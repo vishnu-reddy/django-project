@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'cornerstone',
     'mptt',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (

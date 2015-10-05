@@ -1,6 +1,6 @@
 from django.db import models
 
-from mptt.models import TreeForeignKey, MPTTModel #third party import
+from mptt.models import TreeForeignKey, MPTTModel   #third party import
 
 # model for creating cornerstoneuserprofile
 

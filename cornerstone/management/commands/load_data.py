@@ -1,8 +1,8 @@
+import csv
+import os
 from django.core.management.base import BaseCommand
 from cornerstone.models import *
-import csv
 
-import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +20,7 @@ class Command(BaseCommand):
         with open(file_path) as file:
             rows = csv.reader(file, delimiter = ",", quotechar = '"')
             for row in rows:
-                if set(row).pop() == "":
+                if not all(row) and not list(row).pop()=="" :
                     pass
                 else:
                     for data in row:
@@ -28,6 +28,7 @@ class Command(BaseCommand):
 
                         if rows.line_num == 1:
                             continue
+
                         print "guid:  " + row[0]
                         print "user_id:  " + row[1]
                         print "first_name:   " + row[2]
@@ -35,8 +36,9 @@ class Command(BaseCommand):
 
                         CornerstoneUserProfile.objects.update_or_create(guid = row[0], user_id = row[1], first_name = row[2], last_name = row[3])
 
-            # adding parent
+            # adding parent and re-initialising
             file.seek(0)
+            rows = csv.reader(file, delimiter = ",", quotechar = '"')
             for row in rows:
                 try:
                     user = CornerstoneUserProfile.objects.get(user_id = row[1])
