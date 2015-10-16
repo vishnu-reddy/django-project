@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>CornerstoneUserProfile</title>
 </head>
 <body>
     {% block content %}
         {% load mptt_tags %}
 <ul>
+
+
     {% recursetree nodes %}
         <li>
             {{ node.first_name }}
@@ -21,6 +23,7 @@
     {% endrecursetree %}
 </ul>
     {% endblock content %}
+
 </body>
 </html>
 
